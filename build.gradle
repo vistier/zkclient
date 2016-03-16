@@ -7,7 +7,7 @@ apply plugin: 'project-reports'
 apply plugin: 'osgi'
 
 group = 'com.101tec'
-version = '0.8-dev'
+version = '0.8.1'
 sourceCompatibility = 1.6
 
 jar {
@@ -89,13 +89,14 @@ signing {
 }
 
 
+
 uploadArchives {
 
     repositories.mavenDeployer {
-        //repository(url: "file:///tmp/mavenRepo")
-        repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-            authentication(userName: sonatypeUsername, password: sonatypePassword)
-        }
+        repository(url: "file:///Users/adi/.m2/repository")
+        //repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+        //    authentication(userName: sonatypeUsername, password: sonatypePassword)
+        //}
         beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
         pom.project {
             name 'ZkClient'
@@ -131,6 +132,7 @@ uploadArchives {
         }
     }
 }
+
 
 
 //--------------------
